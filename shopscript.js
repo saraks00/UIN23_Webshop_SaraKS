@@ -7,6 +7,15 @@ function add(title, price) {
     renderCart()
     //oppdatere label med antall produkter
     document.querySelector("#cart .label").innerHTML = cart.length
+    if(document.querySelector("#cartview").classList.contains("hidden")){
+        document.querySelector("#cartview").classList.remove("hidden")
+    }
+}
+
+function total() {
+    let totalPris = 0
+    cart.map(total => totalPris+= total.productPrice)
+    document.getElementById("total").innerHTML = totalPris
 }
 
 function renderCart() {
@@ -21,6 +30,7 @@ function renderCart() {
     </li>`)
     //bruke en selektor for å finne riktig <ul>, og skrive inn listHTML:
     document.querySelector("#cartview ul").innerHTML = listHTML
+    total()
 }
 
 function toggleCart() {
